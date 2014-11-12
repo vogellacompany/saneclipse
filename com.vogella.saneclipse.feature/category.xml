@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.vogella.saneclipse.feature_1.0.0.qualifier.jar" id="com.vogella.saneclipse.feature" version="1.0.0.qualifier">
+      <category name="SanePreferenceSettings"/>
+   </feature>
+   <category-def name="SanePreferenceSettings" label="Saneclipse - Preference settings"/>
+</site>
