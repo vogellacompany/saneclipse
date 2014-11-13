@@ -78,7 +78,7 @@ public class PreferenceInitializer implements IStartup {
 		prefs.put("org.eclipse.jdt.ui.typefilter.enabled",
 				"java.awt.*;javax.swing.*;");
 		prefs.putBoolean("content_assist_insert_completion", false);
-		prefs.putBoolean("enclosingBrackets", true);
+//		prefs.putBoolean("enclosingBrackets", true);
 		prefs.putBoolean("smart_semicolon", true);
 		prefs.putBoolean("smart_opening_brace", true);
 		try {
