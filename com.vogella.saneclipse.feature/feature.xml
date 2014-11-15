@@ -5,7 +5,7 @@
       version="1.0.0.qualifier"
       provider-name="%providerName">
 
-    <description>
+   <description>
       %description
    </description>
 
@@ -17,9 +17,15 @@
       %license
    </license>
 
-
    <plugin
          id="com.vogella.saneclipse.preferences"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.vogella.saneclipse.templates"
          download-size="0"
          install-size="0"
          version="0.0.0"
