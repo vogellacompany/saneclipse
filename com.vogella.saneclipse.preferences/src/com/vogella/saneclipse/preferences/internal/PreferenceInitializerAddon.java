@@ -1,13 +1,20 @@
 package com.vogella.saneclipse.preferences.internal;
 
+import javax.inject.Inject;
+
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
-import org.eclipse.ui.IStartup;
+import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.ui.di.UIEventTopic;
+import org.eclipse.e4.ui.workbench.UIEvents;
+import org.osgi.service.event.Event;
 
-public class PreferenceInitializer implements IStartup {
+public class PreferenceInitializerAddon {
 
-	@Override
-	public void earlyStartup() {
+	@Inject
+	@Optional
+	public void name(
+			@UIEventTopic(UIEvents.UILifeCycle.APP_STARTUP_COMPLETE) Event event) {
 		configureJDT();
 		configureEditor();
 		configureResourceEncoding();
@@ -103,5 +110,4 @@ public class PreferenceInitializer implements IStartup {
 		}
 
 	}
-
 }
