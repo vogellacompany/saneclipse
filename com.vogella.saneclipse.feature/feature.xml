@@ -2,7 +2,7 @@
 <feature
       id="com.vogella.saneclipse.feature"
       label="%featureName"
-      version="1.0.0.qualifier"
+      version="0.1.0.qualifier"
       provider-name="%providerName">
 
    <description>
