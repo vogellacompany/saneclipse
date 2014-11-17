@@ -112,6 +112,15 @@ public class PreferenceInitializerAddon {
 		prefs.putBoolean("sp_cleanup.format_source_code_changes_only", true);
 		prefs.putBoolean("sp_cleanup.organize_imports", true);
 		prefs.putBoolean("sp_cleanup.on_save_use_additional_actions", true);
+		prefs.putBoolean("sp_cleanup.remove_trailing_whitespaces", true);
+		prefs.putBoolean("sp_cleanup.use_blocks", true);
+		prefs.putBoolean("sp_cleanup.convert_to_enhanced_for_loop", true);
+		prefs.putBoolean("sp_cleanup.remove_unnecessary_casts", true);
+		prefs.putBoolean("sp_cleanup.remove_unused_imports", true);
+		prefs.putBoolean("sp_cleanup.add_missing_annotations", true);
+		prefs.putBoolean("sp_cleanup.add_missing_override_annotations", true);
+		prefs.putBoolean("sp_cleanup.add_missing_override_annotations_interface_methods", true);
+		prefs.putBoolean("sp_cleanup.add_missing_deprecated_annotations", true);
 	}
 
 	private IEclipsePreferences getNode(String node) {
