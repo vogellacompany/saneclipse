@@ -31,6 +31,13 @@
             id="com.vogella.saneclipse.fileextensions.editor1"
             name="PHP file association">
       </editor>
+      <editor
+            class="org.eclipse.ui.editors.text.TextEditor"
+            default="false"
+            extensions="md"
+            id="com.vogella.saneclipse.fileextensions.editor1"
+            name="Markdown file association">
+      </editor>
    </extension>
 
 </plugin>
