@@ -6,6 +6,12 @@
       <include
             file="templates/java-templates.xml">
       </include>
+      <include
+            file="templates/android-templates.xml">
+      </include>
+      <include
+            file="templates/intent-templates.xml">
+      </include>
    </extension>
 
 </plugin>

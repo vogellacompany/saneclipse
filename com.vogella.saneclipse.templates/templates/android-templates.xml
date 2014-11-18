@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+/*******************************************************************************
+ * Copyright (c) 2012-2014 vogella GmbH and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Lars Vogel <lars.vogel@vogella.com> - initial API and implementation
+ *******************************************************************************/
+-->
+
+<templates>
+
+<template name="onActivityResult" description="OptionMenu" id="org.eclipse.jdt.ui.templates.android.onActivityResult" context="java-members" enabled="true" autoinsert="false">
+@Override
+	  protected void onActivityResult(int requestCode, int resultCode, ${type:newType(android.content.Intent)} data) {
+	    if (resultCode == Activity.RESULT_OK){
+	   	 	${cursor}
+	    }
+	  }
+</template>
+
+<template name="findViewById" description="Find View by ID" id="org.eclipse.jdt.ui.templates.android.findviewbyid" context="java-statements" enabled="true" autoinsert="false">
+	${viewtype:link(EditText, ImageView, Button)} ${myvar:newName(view)} = (${viewtype:link(EditText, ImageView, Button)}) findViewById(R.id.${cursor});
+</template>
+
+<template name="findViewById - TextView" description="findView by ID for TextView" id="org.eclipse.jdt.ui.templates.android.findviewbyidtextview" context="java-statements" enabled="true" autoinsert="false">
+ 	${type:newType(android.view.TextView)} ${myvar:newName(textView)} = (TextView) findViewById(R.id.${cursor});
+ 	${myvar:newName(textView)}.setText("");
+</template>
+
+<template name="findViewById - EditText" description="findView by ID for EditText" id="org.eclipse.jdt.ui.templates.android.findviewbyidedittext" context="java-statements" enabled="true" autoinsert="false">
+ 	${type:newType(android.view.EditText)} ${myvar:newName(editText)} = (EditText) findViewById(R.id.${cursor});
+ 	String s = ${myvar:newName(editText)}.getText().toString();
+</template>
+
+<template name="findViewById - Button" description="findView by ID for Button" id="org.eclipse.jdt.ui.templates.android.findviewbyidbutton" context="java-statements" enabled="true" autoinsert="false">
+ 	${type:newType(android.view.Button)} ${myvar:newName(button)} = (Button) findViewById(R.id.${cursor});
+</template>
+
+
+<template name="tag" description="Creates a class tag for logging" id="org.vogella.saneclipse.tag" context="java-members" enabled="true" autoinsert="false">
+	private static final String TAG = ${enclosing_type}.class.getSimpleName();
+</template>
+
+<template name="toast" description="Creates a toast" id="org.eclipse.jdt.ui.templates.android.toast" context="java-statements" enabled="true" autoinsert="false">
+	${imp:import(android.widget.Toast)}Toast.makeText(this, "${cursor}", Toast.LENGTH_SHORT).show();
+</template>
+
+<template name="onClick" description="Create onClickMethod" id="org.eclipse.jdt.ui.templates.android.onclick" context="java-members" enabled="true" autoinsert="false">
+		${imp:import(android.view.View)}public void onClick(View view) {
+	}
+</template>
+
+
+<template name="onTouchDraw" description="OnTouch Method" id="org.eclipse.jdt.ui.templates.android.ontouch" context="java-members" enabled="true" autoinsert="false">
+@Override
+	protected void onDraw(Canvas canvas) {
+		super.onDraw(canvas);
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		float x = event.getX();
+		float y = event.getY();
+		switch (event.getAction()) {
+		case MotionEvent.ACTION_DOWN:
+			break;
+		case MotionEvent.ACTION_MOVE:
+			break;
+		default:
+			break;
+		}
+		return true;
+	}
+
+</template>
+	  
+<template name="paintconfig" description="Create Paint configuration" id="org.eclipse.jdt.ui.templates.android.paintconfig" context="java-statements" enabled="true" autoinsert="false">
+	paint.setAntiAlias(true);
+    paint.setColor(Color.WHITE);
+    paint.setStyle(Paint.Style.STROKE);
+    paint.setStrokeJoin(Paint.Join.ROUND);
+    paint.setStrokeWidth(5f);
+</template>
+
+
+<template name="arrayadaper" description="creates default ArrayAdaper"
+		id="org.eclipse.jdt.ui.templates.arrayadaper" context="java-statements"
+		enabled="true" autoinsert="false">
+		ArrayAdapter adapter = new ArrayAdapter(this,
+				android.R.layout.simple_list_item_1, input);
+</template>
+
+</templates>

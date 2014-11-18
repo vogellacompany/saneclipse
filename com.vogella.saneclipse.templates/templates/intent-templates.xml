@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- /******************************************************************************* 
+	* Copyright (c) 2012 vogella GmbH and others. * All rights reserved. This 
+	program and the accompanying materials * are made available under the terms 
+	of the Eclipse Public License v1.0 * which accompanies this distribution, 
+	and is available at * http://www.eclipse.org/legal/epl-v10.html * * Contributors: 
+	* Lars Vogel <lars.vogel@gmail.com> - initial API and implementation *******************************************************************************/ -->
+
+<templates>
+
+	<template name="intent-share" description="Share Intent"
+		id="org.eclipse.jdt.ui.templates.android.intent.share" context="java-statements"
+		enabled="true" autoinsert="false">
+		${type:newType(android.content.Intent)} intent = new Intent(Intent.ACTION_SEND);
+		intent.setType("text/plain");
+		intent.putExtra(Intent.EXTRA_TEXT, "Message");
+	</template>
+
+	<template name="intent-pickimage" description="Pick an Image"
+		id="org.eclipse.jdt.ui.templates.android.intent.pickimage" context="java-statements"
+		enabled="true" autoinsert="false">
+		${type:newType(android.content.Intent)} intent = new Intent();
+		intent.setType("image/*");
+		intent.setAction(Intent.ACTION_GET_CONTENT);
+		intent.addCategory(Intent.CATEGORY_OPENABLE);
+	</template>
+
+</templates>
