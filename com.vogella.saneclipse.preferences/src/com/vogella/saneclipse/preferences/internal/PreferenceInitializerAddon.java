@@ -15,10 +15,18 @@ public class PreferenceInitializerAddon {
 	@Optional
 	public void name(@UIEventTopic(UIEvents.UILifeCycle.APP_STARTUP_COMPLETE) Event event) {
 		configureJDT();
+		configureDebug();
 		configureEditor();
 		configureResourceEncoding();
 		configureLineSeparator();
 		configureMemoryMonitorActive();
+	}
+
+	private void configureDebug() {
+		IEclipsePreferences prefs = getNode("org.eclipse.debug.ui");
+		prefs.put("org.eclipse.debug.ui.switch_perspective_on_suspend", "always");
+		prefs.put("preferredDetailPanes", "DefaultDetailPane:DefaultDetailPane|");
+		savePrefs(prefs);
 	}
 
 	private void configureEditor() {
