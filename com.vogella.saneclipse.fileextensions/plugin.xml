@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.ui.editors.text.TextEditor"
+            default="false"
+            extensions="css"
+            id="com.vogella.saneclipse.fileextensions.editor1"
+            name="CSS file association">
+      </editor>
+      <editor
+            class="org.eclipse.ui.editors.text.TextEditor"
+            default="false"
+            extensions="json"
+            id="com.vogella.saneclipse.fileextensions.editor1"
+            name="JSON file association">
+      </editor>
+      <editor
+            class="org.eclipse.ui.editors.text.TextEditor"
+            default="false"
+            extensions="js"
+            id="com.vogella.saneclipse.fileextensions.editor1"
+            name="JavaScript file association">
+      </editor>
+      <editor
+            class="org.eclipse.ui.editors.text.TextEditor"
+            default="false"
+            extensions="php"
+            id="com.vogella.saneclipse.fileextensions.editor1"
+            name="PHP file association">
+      </editor>
+   </extension>
+
+</plugin>
