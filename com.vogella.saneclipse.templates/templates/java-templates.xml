@@ -21,10 +21,10 @@
     }
   </template>
 
-  <template name="arrayexample" description="Creates an Array with some example content"
+  <template name="array-string-with-test-data" description="Creates an String array with test data"
     id="org.eclipse.jdt.ui.templates.arrayexample" context="java-statements"
     enabled="true" autoinsert="false">
-    String[] ${myvar:newName(var)} =
+    String[] ${myvar:newName(values)} =
     new String[]{"Windows 7", "MacOS", "Debian", "Ubuntu", "Redhat",
     "Android", "iPhone", "Suse", "Windows XP", "Windows Mobile", "OS/2", "WebOS"};
   </template>

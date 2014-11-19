@@ -24,8 +24,12 @@
 	  }
 </template>
 
-<template name="findViewById" description="Find View by ID" id="org.eclipse.jdt.ui.templates.android.findviewbyid" context="java-statements" enabled="true" autoinsert="false">
+<template name="findViewById" description="findviewbyiD" id="org.eclipse.jdt.ui.templates.android.findviewbyid_list" context="java-statements" enabled="true" autoinsert="false">
 	${viewtype:link(EditText, ImageView, Button)} ${myvar:newName(view)} = (${viewtype:link(EditText, ImageView, Button)}) findViewById(R.id.${cursor});
+</template>
+
+<template name="findViewById - View" description="findViewById" id="org.eclipse.jdt.ui.templates.android.findviewbyid" context="java-statements" enabled="true" autoinsert="false">
+	${type:newType(android.view.TextView)} ${myvar:newName(textView)} = (TextView) findViewById(R.id.${cursor});
 </template>
 
 <template name="findViewById - TextView" description="findView by ID for TextView" id="org.eclipse.jdt.ui.templates.android.findviewbyidtextview" context="java-statements" enabled="true" autoinsert="false">
@@ -93,7 +97,7 @@
 		id="org.eclipse.jdt.ui.templates.arrayadaper" context="java-statements"
 		enabled="true" autoinsert="false">
 		ArrayAdapter adapter = new ArrayAdapter(this,
-				android.R.layout.simple_list_item_1, input);
+				android.R.layout.simple_list_item_1, values);
 </template>
 
 </templates>
