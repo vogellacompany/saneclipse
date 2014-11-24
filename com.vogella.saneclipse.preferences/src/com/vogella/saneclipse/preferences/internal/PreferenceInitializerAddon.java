@@ -11,15 +11,20 @@ import org.osgi.service.event.Event;
 
 public class PreferenceInitializerAddon {
 
+	private boolean preferecesInitialized;
+
 	@Inject
 	@Optional
-	public void name(@UIEventTopic(UIEvents.UILifeCycle.APP_STARTUP_COMPLETE) Event event) {
-		configureJDT();
-		configureDebug();
-		configureEditor();
-		configureResourceEncoding();
-		configureLineSeparator();
-		configureMemoryMonitorActive();
+	public void name(@UIEventTopic(UIEvents.UILifeCycle.ACTIVATE) Event event) {
+		if(!preferecesInitialized) {
+			preferecesInitialized = true;
+			configureJDT();
+			configureDebug();
+			configureEditor();
+			configureResourceEncoding();
+			configureLineSeparator();
+			configureMemoryMonitorActive();
+		}
 	}
 
 	private void configureDebug() {

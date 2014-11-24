@@ -16,7 +16,7 @@
 	<repositories>
 		<repository>
 			<id>eclipse-luna</id>
-			<url>http://download.eclipse.org/releases/luna/</url>
+			<url>http://download.eclipse.org/releases/juno/</url>
 			<layout>p2</layout>
 		</repository>
 	</repositories>
