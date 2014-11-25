@@ -19,6 +19,7 @@ public class PreferenceInitializerAddon {
 			preferecesInitialized = true;
 			configureJDT();
 			configureIde();
+			configureWorkbench();
 			configureDebug();
 			configureEditor();
 			configureResourceEncoding();
@@ -31,12 +32,19 @@ public class PreferenceInitializerAddon {
 		IEclipsePreferences prefs = Util.getNode("org.eclipse.debug.ui");
 		prefs.put("org.eclipse.debug.ui.switch_perspective_on_suspend", "always");
 		prefs.put("preferredDetailPanes", "DefaultDetailPane:DefaultDetailPane|");
+		prefs.put("org.eclipse.debug.ui.save_dirty_editors_before_launch", "always|");
+		prefs.put("org.eclipse.debug.ui.UseContextualLaunch", "false|");
 		Util.savePrefs(prefs);
 	}
 
 	private void configureIde() {
 		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.ide");
 		prefs.putBoolean("EXIT_PROMPT_ON_CLOSE_LAST_WINDOW", false);
+		Util.savePrefs(prefs);
+	}
+	private void configureWorkbench() {
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.workbench");
+		prefs.putBoolean("RUN_IN_BACKGROUND", true);
 		Util.savePrefs(prefs);
 	}
 	
