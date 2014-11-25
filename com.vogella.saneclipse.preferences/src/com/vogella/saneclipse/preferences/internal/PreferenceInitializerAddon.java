@@ -102,8 +102,9 @@ public class PreferenceInitializerAddon {
 		IEclipsePreferences prefs = InstanceScope.INSTANCE.getNode("org.eclipse.jdt.ui"); // does
 																							// all
 		prefs.putInt("content_assist_autoactivation_delay", 20);
-		prefs.put("content_assist_autoactivation_triggers_java",
-				".abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_");
+		// commented out until https://bugs.eclipse.org/bugs/show_bug.cgi?id=453125 is solved
+		// prefs.put("content_assist_autoactivation_triggers_java",
+		//		".abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_");
 		prefs.put("org.eclipse.jdt.ui.typefilter.enabled", "java.awt.*;javax.swing.*;");
 		prefs.putBoolean("content_assist_insert_completion", false);
 		prefs.putBoolean("enclosingBrackets", true);
