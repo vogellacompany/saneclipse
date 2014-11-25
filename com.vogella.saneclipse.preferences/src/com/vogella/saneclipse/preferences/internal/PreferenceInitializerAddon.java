@@ -3,7 +3,6 @@ package com.vogella.saneclipse.preferences.internal;
 import javax.inject.Inject;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.workbench.UIEvents;
@@ -19,6 +18,7 @@ public class PreferenceInitializerAddon {
 		if(!preferecesInitialized) {
 			preferecesInitialized = true;
 			configureJDT();
+			configureIde();
 			configureDebug();
 			configureEditor();
 			configureResourceEncoding();
@@ -28,78 +28,49 @@ public class PreferenceInitializerAddon {
 	}
 
 	private void configureDebug() {
-		IEclipsePreferences prefs = getNode("org.eclipse.debug.ui");
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.debug.ui");
 		prefs.put("org.eclipse.debug.ui.switch_perspective_on_suspend", "always");
 		prefs.put("preferredDetailPanes", "DefaultDetailPane:DefaultDetailPane|");
-		savePrefs(prefs);
+		Util.savePrefs(prefs);
 	}
 
+	private void configureIde() {
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.ide");
+		prefs.putBoolean("EXIT_PROMPT_ON_CLOSE_LAST_WINDOW", false);
+		Util.savePrefs(prefs);
+	}
+	
 	private void configureEditor() {
-		IEclipsePreferences prefs = getNode("org.eclipse.ui.editors");
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.editors");
 		prefs.putBoolean("lineNumberRuler", true);
-		savePrefs(prefs);
+		Util.savePrefs(prefs);
 	}
 
 	private void configureMemoryMonitorActive() {
 		// Platform.ui settings
-		IEclipsePreferences platformuiprefs = InstanceScope.INSTANCE.getNode("org.eclipse.ui"); // does
-																								// all
-																								// the
-																								// above
-																								// behind
-																								// the
-																								// scenes
-
+		IEclipsePreferences platformuiprefs = Util.getNode("org.eclipse.ui");
+		
 		platformuiprefs.putBoolean("SHOW_MEMORY_MONITOR", true);
-		try {
-			// prefs are automatically flushed during a plugin's "super.stop()".
-			platformuiprefs.flush();
-		} catch (org.osgi.service.prefs.BackingStoreException e) {
-			e.printStackTrace();
-		}
+		Util.savePrefs(platformuiprefs);
 	}
 
 	private void configureLineSeparator() {
 		// Workspace settings
-		IEclipsePreferences runtimeprefs = InstanceScope.INSTANCE.getNode("org.eclipse.core.runtime"); // does
-																										// all
-																										// the
-																										// above
-																										// behind
-																										// the
-																										// scenes
-
+		IEclipsePreferences runtimeprefs = Util.getNode("org.eclipse.core.runtime"); 
 		runtimeprefs.put("line.separator", "\n");
-		try {
-			// prefs are automatically flushed during a plugin's "super.stop()".
-			runtimeprefs.flush();
-		} catch (org.osgi.service.prefs.BackingStoreException e) {
-			e.printStackTrace();
-		}
+		Util.savePrefs(runtimeprefs);
 	}
 
 	private void configureResourceEncoding() {
 		// Workspace settings
-		IEclipsePreferences resourcesprefs = InstanceScope.INSTANCE.getNode("org.eclipse.core.resources"); // does
-																											// all
-																											// the
-																											// above
-																											// behind
-																											// the
-																											// scenes
-
+		IEclipsePreferences resourcesprefs = Util.getNode("org.eclipse.core.resources"); 
 		resourcesprefs.put("encoding", "UTF-8");
-		try {
-			// prefs are automatically flushed during a plugin's "super.stop()".
-			resourcesprefs.flush();
-		} catch (org.osgi.service.prefs.BackingStoreException e) {
-			e.printStackTrace();
-		}
+		Util.savePrefs(resourcesprefs);
 	}
 
 	private void configureJDT() {
 		// JDT settings
-		IEclipsePreferences prefs = InstanceScope.INSTANCE.getNode("org.eclipse.jdt.ui"); // does
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.jdt.ui"); // does
 																							// all
 		prefs.putInt("content_assist_autoactivation_delay", 20);
 		// commented out until https://bugs.eclipse.org/bugs/show_bug.cgi?id=453125 is solved
@@ -110,15 +81,8 @@ public class PreferenceInitializerAddon {
 		prefs.putBoolean("enclosingBrackets", true);
 		prefs.putBoolean("smart_semicolon", true);
 		prefs.putBoolean("smart_opening_brace", true);
-		
 		configureSaveActions(prefs);
-		
-		try {
-			// prefs are automatically flushed during a plugin's "super.stop()".
-			prefs.flush();
-		} catch (org.osgi.service.prefs.BackingStoreException e) {
-			e.printStackTrace();
-		}
+		Util.savePrefs(prefs);
 	}
 	
 	private void configureSaveActions(IEclipsePreferences prefs) {
@@ -137,18 +101,5 @@ public class PreferenceInitializerAddon {
 		prefs.putBoolean("sp_cleanup.add_missing_deprecated_annotations", true);
 	}
 
-	private IEclipsePreferences getNode(String node) {
-		// Platform.ui settings
-		return InstanceScope.INSTANCE.getNode(node);
-	}
-
-	private void savePrefs(IEclipsePreferences prefs) {
-		try {
-			// prefs are automatically flushed during a plugin's "super.stop()".
-			prefs.flush();
-		} catch (org.osgi.service.prefs.BackingStoreException e) {
-			e.printStackTrace();
-		}
-
-	}
+	
 }
