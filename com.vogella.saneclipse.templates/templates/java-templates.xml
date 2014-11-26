@@ -14,12 +14,21 @@
 
 
   <template name="ifnotnull" description="If not null"
-    id="org.eclipse.jdt.ui.templates.notnull" context="java-statements"
+    id="org.eclipse.jdt.ui.templates.ifnotnull" context="java-statements"
     enabled="true" autoinsert="false">
     if (${myvar:newName(variable)}!=null) {
       ${cursor}
     }
   </template>
+  
+  <template name="ifnull" description="If null"
+    id="org.eclipse.jdt.ui.templates.iftnull" context="java-statements"
+    enabled="true" autoinsert="false">
+    if (${myvar:newName(variable)}==null) {
+      ${cursor}
+    }
+  </template>
+  
 
   <template name="array-string-with-test-data" description="Creates an String array with test data"
     id="org.eclipse.jdt.ui.templates.arrayexample" context="java-statements"
