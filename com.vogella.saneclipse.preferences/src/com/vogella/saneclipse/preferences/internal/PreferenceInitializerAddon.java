@@ -40,6 +40,7 @@ public class PreferenceInitializerAddon {
 	private void configureIde() {
 		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.ide");
 		prefs.putBoolean("EXIT_PROMPT_ON_CLOSE_LAST_WINDOW", false);
+		prefs.putInt("MAX_RECENT_WORKSPACES", 10);
 		Util.savePrefs(prefs);
 	}
 	private void configureWorkbench() {
