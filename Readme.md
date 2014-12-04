@@ -24,7 +24,7 @@ Use the Eclipse Help -> Install new Software to install the tools from it:
     http://dl.bintray.com/vogellacompany/saneclipse/ 
 
 Building saneclipse
-===================
+-------------------
 
 Use Maven to build saneclipse
 
