@@ -46,6 +46,7 @@ public class PreferenceInitializerAddon {
 	private void configureWorkbench() {
 		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.workbench");
 		prefs.putBoolean("RUN_IN_BACKGROUND", true);
+		prefs.put("PLUGINS_NOT_ACTIVATED_ON_STARTUP", "org.eclipse.equinox.p2.ui.sdk.scheduler;org.eclipse.m2e.discovery;");
 		Util.savePrefs(prefs);
 	}
 	
