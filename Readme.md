@@ -23,8 +23,8 @@ Use the Eclipse Help -> Install new Software to install the tools from it:
 
     http://dl.bintray.com/vogellacompany/saneclipse/ 
 
-![alt tag](https://raw.github.com/vogellacompany/com.vogella.saneclipse/blob/master/com.vogella.saneclipse.repository/installsaneclipse10.png)
-![alt tag](https://raw.github.com/vogellacompany/com.vogella.saneclipse/blob/master/com.vogella.saneclipse.repository/installsaneclipse20.png)
+![alt tag](https://raw.github.com/vogellacompany/com.vogella.saneclipse/master/com.vogella.saneclipse.repository/installsaneclipse10.png)
+![alt tag](https://raw.github.com/vogellacompany/com.vogella.saneclipse/master/com.vogella.saneclipse.repository/installsaneclipse20.png)
 
 
 Building saneclipse
