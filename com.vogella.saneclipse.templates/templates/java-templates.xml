@@ -58,12 +58,13 @@
     id="org.eclipse.jdt.ui.templates.finallyclosestream"
     context="java-statements" enabled="true" autoinsert="false">
     finally {
-    if (stream != null)
-    try {
-    stream.close();
-    } catch (IOException e) {
-    e.printStackTrace();
-    }
+    	if (stream != null) {
+    		try {
+    			stream.close();
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    		}
+    	}
     }
   </template>
   
