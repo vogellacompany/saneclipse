@@ -91,6 +91,7 @@ public class PreferenceInitializerAddon {
 		prefs.putBoolean("enclosingBrackets", true);
 		prefs.putBoolean("smart_semicolon", true);
 		prefs.putBoolean("smart_opening_brace", true);
+		prefs.putBoolean("escapeStrings", true);
 		configureSaveActions(prefs);
 		Util.savePrefs(prefs);
 	}
