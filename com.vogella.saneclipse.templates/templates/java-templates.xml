@@ -41,7 +41,7 @@
    <template name="list" description="Creates an List"
     id="org.eclipse.jdt.ui.templates.list" context="java-statements"
     enabled="true" autoinsert="false">
-    ${imp:import(java.util.List, java.util.ArrayList)}List&lt;Object&gt; ${myvar:newName(var)} = new ArrayList&lt;&gt;();
+    ${imp:import(java.util.List, java.util.ArrayList)}List&lt;Object&gt; ${myvar:newName(values)} = new ArrayList&lt;&gt;();
   </template>
   
   <template name="method-public" 
