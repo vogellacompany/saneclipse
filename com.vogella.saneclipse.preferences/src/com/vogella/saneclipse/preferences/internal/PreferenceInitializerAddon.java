@@ -92,6 +92,8 @@ public class PreferenceInitializerAddon {
 		prefs.putBoolean("smart_semicolon", true);
 		prefs.putBoolean("smart_opening_brace", true);
 		prefs.putBoolean("escapeStrings", true);
+		prefs.put("org.eclipse.jdt.ui.text.custom_code_templates", "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><templates><template autoinsert=\"false\" context=\"catchblock_context\" deleted=\"false\" description=\"Code in new catch blocks\" enabled=\"true\" id=\"org.eclipse.jdt.ui.text.codetemplates.catchblock\" name=\"catchblock\">${exception_var}.printStackTrace();</template><template autoinsert=\"false\" context=\"methodbody_context\" deleted=\"false\" description=\"Code in created method stubs\" enabled=\"true\" id=\"org.eclipse.jdt.ui.text.codetemplates.methodbody\" name=\"methodbody\">${body_statement}</template><template autoinsert=\"false\" context=\"constructorbody_context\" deleted=\"false\" description=\"Code in created constructor stubs\" enabled=\"true\" id=\"org.eclipse.jdt.ui.text.codetemplates.constructorbody\" name=\"constructorbody\">${body_statement}</template></templates>");
+		
 		configureSaveActions(prefs);
 		Util.savePrefs(prefs);
 	}
