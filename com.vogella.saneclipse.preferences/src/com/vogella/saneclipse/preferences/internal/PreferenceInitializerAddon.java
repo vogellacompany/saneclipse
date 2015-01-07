@@ -20,6 +20,7 @@ public class PreferenceInitializerAddon {
 			configureJDT();
 			configureIde();
 			configureWorkbench();
+			configurePerformanceMonitoring();
 			configureDebug();
 			configureEditor();
 			configureResourceEncoding();
@@ -43,10 +44,18 @@ public class PreferenceInitializerAddon {
 		prefs.putInt("MAX_RECENT_WORKSPACES", 10);
 		Util.savePrefs(prefs);
 	}
+	
 	private void configureWorkbench() {
 		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.workbench");
 		prefs.putBoolean("RUN_IN_BACKGROUND", true);
 		prefs.put("PLUGINS_NOT_ACTIVATED_ON_STARTUP", "org.eclipse.equinox.p2.ui.sdk.scheduler;org.eclipse.m2e.discovery;");
+		Util.savePrefs(prefs);
+	}
+	
+	private void configurePerformanceMonitoring() {
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.monitoring");
+		prefs.putBoolean("monitoring_enabled", true);
+		prefs.putInt("long_event_error_threshold", 800);
 		Util.savePrefs(prefs);
 	}
 	
