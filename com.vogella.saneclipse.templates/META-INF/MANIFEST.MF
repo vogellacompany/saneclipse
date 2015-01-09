@@ -5,4 +5,8 @@ Bundle-SymbolicName: com.vogella.saneclipse.templates;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: vogella GmbH
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: org.eclipse.ui.editors
+Require-Bundle: org.eclipse.ui.editors,
+ org.eclipse.jdt.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.jdt.core

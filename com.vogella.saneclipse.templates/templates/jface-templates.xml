@@ -1,0 +1,36 @@
+<template name="TableViewer"
+    description="Creates a default JFace TableViewer" 
+    id="org.eclipse.jdt.ui.templates.jfacetableviewer"
+    context="jface-statements" enabled="true" autoinsert="false">
+
+		TableViewer tableViewer = new TableViewer(parent);
+
+		Table table = tableViewer.getTable();
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
+
+		tableViewer.setContentProvider(ArrayContentProvider.getInstance());
+		tableViewer
+				.addSelectionChangedListener(new ISelectionChangedListener() {
+
+					@Override
+					public void selectionChanged(SelectionChangedEvent event) {
+						ISelection selection = event.getSelection();
+						if (selection instanceof IStructuredSelection) {
+							selectionService.setSelection(((IStructuredSelection)selection).toList());
+						}
+					}
+				});
+		TableViewerColumn viewerColumn = new TableViewerColumn(tableViewer,
+				SWT.NONE);
+		viewerColumn.getColumn().setWidth(200);
+		viewerColumn.getColumn().setText("Name");
+
+		viewerColumn.setLabelProvider(new ColumnLabelProvider());
+
+		IObservableList input = new WritableList();
+		ViewerSupport.bind(
+				tableViewer,
+				input,
+				PojoProperties.values(new String[] { "name" }));
+</template>

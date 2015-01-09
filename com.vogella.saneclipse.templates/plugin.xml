@@ -7,11 +7,49 @@
             file="templates/java-templates.xml">
       </include>
       <include
+            file="templates/jface-templates.xml">
+      </include>
+      <include
             file="templates/android-templates.xml">
       </include>
       <include
             file="templates/intent-templates.xml">
       </include>
+      <contextType
+            class="com.vogella.saneclipse.templates.JFaceContextType"
+            id="jface"
+            name="jface"
+            registryId="org.eclipse.jdt.ui.CompilationUnitEditor">
+      </contextType>
+      <contextType
+            class="com.vogella.saneclipse.templates.JFaceContextType"
+            id="jface-members"
+            name="jface members"
+            registryId="org.eclipse.jdt.ui.CompilationUnitEditor">
+      </contextType>
+      <contextType
+            class="com.vogella.saneclipse.templates.JFaceContextType"
+            id="jface-statements"
+            name="jface statements"
+            registryId="org.eclipse.jdt.ui.CompilationUnitEditor">
+      </contextType>
+   </extension>
+   <extension
+         id="jface-proposals"
+         name="jface proposals"
+         point="org.eclipse.jdt.ui.javaCompletionProposalComputer">
+      <javaCompletionProposalComputer
+            activate="true"
+            categoryId="com.vogella.saneclipse.templates.jface_proposals"
+            class="com.vogella.saneclipse.templates.JFaceCompletionProposalComputer"
+            needsSortingAfterFiltering="false">
+      </javaCompletionProposalComputer>
+   </extension>
+   <extension
+         id="jface-proposals-category"
+         name="jface proposals"
+         point="org.eclipse.jdt.ui.javaCompletionProposalComputer">
+      <proposalCategory></proposalCategory>
    </extension>
 
 </plugin>
