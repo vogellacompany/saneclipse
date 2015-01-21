@@ -17,7 +17,8 @@ public class PreferenceInitializerAddon {
 	public void name(@UIEventTopic(UIEvents.UILifeCycle.ACTIVATE) Event event) {
 		if(!preferecesInitialized) {
 			preferecesInitialized = true;
-			configureJDT();
+			configureJDTUi();
+			configureJDTCore();
 			configureIde();
 			configureWorkbench();
 			configurePerformanceMonitoring();
@@ -87,7 +88,7 @@ public class PreferenceInitializerAddon {
 		Util.savePrefs(resourcesprefs);
 	}
 
-	private void configureJDT() {
+	private void configureJDTUi() {
 		// JDT settings
 		IEclipsePreferences prefs = Util.getNode("org.eclipse.jdt.ui"); // does
 																							// all
@@ -102,6 +103,21 @@ public class PreferenceInitializerAddon {
 		prefs.putBoolean("smart_opening_brace", true);
 		prefs.putBoolean("escapeStrings", true);
 		prefs.put("org.eclipse.jdt.ui.text.custom_code_templates", "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><templates><template autoinsert=\"false\" context=\"catchblock_context\" deleted=\"false\" description=\"Code in new catch blocks\" enabled=\"true\" id=\"org.eclipse.jdt.ui.text.codetemplates.catchblock\" name=\"catchblock\">${exception_var}.printStackTrace();</template><template autoinsert=\"false\" context=\"methodbody_context\" deleted=\"false\" description=\"Code in created method stubs\" enabled=\"true\" id=\"org.eclipse.jdt.ui.text.codetemplates.methodbody\" name=\"methodbody\">${body_statement}</template><template autoinsert=\"false\" context=\"constructorbody_context\" deleted=\"false\" description=\"Code in created constructor stubs\" enabled=\"true\" id=\"org.eclipse.jdt.ui.text.codetemplates.constructorbody\" name=\"constructorbody\">${body_statement}</template></templates>");
+		
+		configureSaveActions(prefs);
+		Util.savePrefs(prefs);
+	}
+	
+	private void configureJDTCore() {
+		// JDT settings
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.jdt.core"); // does
+																							// all
+		prefs.put("org.eclipse.jdt.core.compiler.problem.noEffectAssignment", "error");
+		prefs.put("org.eclipse.jdt.core.compiler.problem.missingOverrideAnnotation", "warning");
+		prefs.put("org.eclipse.jdt.core.compiler.problem.comparingIdentical", "error");
+		prefs.put("org.eclipse.jdt.core.compiler.problem.missingHashCodeMethod", "warning");
+		prefs.put("org.eclipse.jdt.core.compiler.problem.potentiallyUnclosedCloseable", "warning");
+		
 		
 		configureSaveActions(prefs);
 		Util.savePrefs(prefs);
