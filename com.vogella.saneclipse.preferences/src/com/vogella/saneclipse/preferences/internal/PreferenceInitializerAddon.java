@@ -10,13 +10,13 @@ import org.osgi.service.event.Event;
 
 public class PreferenceInitializerAddon {
 
-	private boolean preferecesInitialized;
+	private boolean preferencesInitialized;
 
 	@Inject
 	@Optional
 	public void name(@UIEventTopic(UIEvents.UILifeCycle.ACTIVATE) Event event) {
-		if(!preferecesInitialized) {
-			preferecesInitialized = true;
+		if(!preferencesInitialized) {
+			preferencesInitialized = true;
 			configureJDTUi();
 			configureJDTCore();
 			configureIde();
