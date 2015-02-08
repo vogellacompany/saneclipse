@@ -92,7 +92,7 @@ public class PreferenceInitializerAddon {
 		// JDT settings
 		IEclipsePreferences prefs = Util.getNode("org.eclipse.jdt.ui"); // does
 																							// all
-		prefs.putInt("content_assist_autoactivation_delay", 20);
+		prefs.putInt("content_assist_autoactivation_delay", 0);
 		// commented out until https://bugs.eclipse.org/bugs/show_bug.cgi?id=453125 is solved
 		// prefs.put("content_assist_autoactivation_triggers_java",
 		//		".abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_");
