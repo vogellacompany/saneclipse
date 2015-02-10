@@ -81,10 +81,11 @@ public class PreferenceInitializerAddon {
 		Util.savePrefs(runtimeprefs);
 	}
 
+	// Comment out because some customers are not using UTF
 	private void configureResourceEncoding() {
 		// Workspace settings
 		IEclipsePreferences resourcesprefs = Util.getNode("org.eclipse.core.resources"); 
-		resourcesprefs.put("encoding", "UTF-8");
+//		resourcesprefs.put("encoding", "UTF-8");
 		Util.savePrefs(resourcesprefs);
 	}
 
