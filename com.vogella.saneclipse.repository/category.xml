@@ -3,5 +3,5 @@
    <feature url="features/com.vogella.saneclipse.feature_0.1.0.qualifier.jar" id="com.vogella.saneclipse.feature" version="0.1.0.qualifier">
       <category name="Saneclipse"/>
    </feature>
-   <category-def name="Saneclipse" label="Saneclipse - Improve IDE settings"/>
+   <category-def name="Saneclipse" label="voclipse tooling for the Eclipse IDE"/>
 </site>
