@@ -81,10 +81,11 @@ public class PreferenceInitializerAddon {
 		Util.savePrefs(platformuiprefs);
 	}
 
+	// Comment out because some customers are not using Unix line breaks
 	private void configureLineSeparator() {
 		// Workspace settings
 		IEclipsePreferences runtimeprefs = Util.getNode("org.eclipse.core.runtime"); 
-		runtimeprefs.put("line.separator", "\n");
+//		runtimeprefs.put("line.separator", "\n");
 		Util.savePrefs(runtimeprefs);
 	}
 
