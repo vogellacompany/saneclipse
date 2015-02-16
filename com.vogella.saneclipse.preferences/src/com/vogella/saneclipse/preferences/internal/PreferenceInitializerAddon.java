@@ -24,6 +24,7 @@ public class PreferenceInitializerAddon {
 			configurePerformanceMonitoring();
 			configureDebug();
 			configureEditor();
+			configureXMLEditor();
 			configureResourceEncoding();
 			configureLineSeparator();
 			configureMemoryMonitorActive();
@@ -63,6 +64,12 @@ public class PreferenceInitializerAddon {
 	private void configureEditor() {
 		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.editors");
 		prefs.putBoolean("lineNumberRuler", true);
+		Util.savePrefs(prefs);
+	}
+	
+	private void configureXMLEditor() {
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.wst.xml.core");
+		prefs.putInt("lineWidth", 120);
 		Util.savePrefs(prefs);
 	}
 
