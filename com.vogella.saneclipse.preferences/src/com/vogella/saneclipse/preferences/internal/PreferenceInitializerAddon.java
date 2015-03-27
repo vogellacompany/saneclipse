@@ -19,88 +19,24 @@ public class PreferenceInitializerAddon {
 			preferencesInitialized = true;
 			configureJDTUi();
 			configureJDTCore();
+			configurePDEUi();
 			configureIde();
 			configureWorkbench();
 			configurePerformanceMonitoring();
 			configureDebug();
 			configureEditor();
 			configureXMLEditor();
-			configureResourceEncoding();
-			configureLineSeparator();
 			configureMemoryMonitorActive();
 		}
 	}
 
-	private void configureDebug() {
-		IEclipsePreferences prefs = Util.getNode("org.eclipse.debug.ui");
-		prefs.put("org.eclipse.debug.ui.switch_perspective_on_suspend", "always");
-		prefs.put("preferredDetailPanes", "DefaultDetailPane:DefaultDetailPane|");
-		prefs.put("org.eclipse.debug.ui.save_dirty_editors_before_launch", "always|");
-		prefs.put("org.eclipse.debug.ui.UseContextualLaunch", "false|");
-		Util.savePrefs(prefs);
-	}
-
-	private void configureIde() {
-		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.ide");
-		prefs.putBoolean("EXIT_PROMPT_ON_CLOSE_LAST_WINDOW", false);
-		prefs.putInt("MAX_RECENT_WORKSPACES", 10);
-		Util.savePrefs(prefs);
-	}
-	
-	private void configureWorkbench() {
-		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.workbench");
-		prefs.putBoolean("RUN_IN_BACKGROUND", true);
-		prefs.put("PLUGINS_NOT_ACTIVATED_ON_STARTUP", "org.eclipse.equinox.p2.ui.sdk.scheduler;org.eclipse.m2e.discovery;");
-		Util.savePrefs(prefs);
-	}
-	
-	private void configurePerformanceMonitoring() {
-		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.monitoring");
-		prefs.putBoolean("monitoring_enabled", true);
-		prefs.putInt("long_event_error_threshold", 800);
-		Util.savePrefs(prefs);
-	}
-	
-	private void configureEditor() {
-		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.editors");
-		prefs.putBoolean("lineNumberRuler", true);
-		Util.savePrefs(prefs);
-	}
-	
-	private void configureXMLEditor() {
-		IEclipsePreferences prefs = Util.getNode("org.eclipse.wst.xml.core");
-		prefs.putInt("lineWidth", 120);
-		Util.savePrefs(prefs);
-	}
-
-	private void configureMemoryMonitorActive() {
-		// Platform.ui settings
-		IEclipsePreferences platformuiprefs = Util.getNode("org.eclipse.ui");
-		
-		platformuiprefs.putBoolean("SHOW_MEMORY_MONITOR", true);
-		Util.savePrefs(platformuiprefs);
-	}
-
-	// Comment out because some customers are not using Unix line breaks
-	private void configureLineSeparator() {
-		// Workspace settings
-		IEclipsePreferences runtimeprefs = Util.getNode("org.eclipse.core.runtime"); 
-//		runtimeprefs.put("line.separator", "\n");
-		Util.savePrefs(runtimeprefs);
-	}
-
-	// Comment out because some customers are not using UTF
-	private void configureResourceEncoding() {
-		// Workspace settings
-		IEclipsePreferences resourcesprefs = Util.getNode("org.eclipse.core.resources"); 
-//		resourcesprefs.put("encoding", "UTF-8");
-		Util.savePrefs(resourcesprefs);
-	}
-
 	private void configureJDTUi() {
 		// JDT settings
-		IEclipsePreferences prefs = Util.getNode("org.eclipse.jdt.ui"); // does
-																							// all
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.jdt.ui"); // does all
+		if(null == prefs) {
+			return;
+		}
+		
 		prefs.putInt("content_assist_autoactivation_delay", 0);
 		// commented out until https://bugs.eclipse.org/bugs/show_bug.cgi?id=453125 is solved
 		// prefs.put("content_assist_autoactivation_triggers_java",
@@ -116,11 +52,14 @@ public class PreferenceInitializerAddon {
 		configureSaveActions(prefs);
 		Util.savePrefs(prefs);
 	}
-	
+
 	private void configureJDTCore() {
 		// JDT settings
-		IEclipsePreferences prefs = Util.getNode("org.eclipse.jdt.core"); // does
-																							// all
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.jdt.core"); // does all
+		if(null == prefs) {
+			return;
+		}
+		
 		prefs.put("org.eclipse.jdt.core.compiler.problem.noEffectAssignment", "error");
 		prefs.put("org.eclipse.jdt.core.compiler.problem.missingOverrideAnnotation", "warning");
 		prefs.put("org.eclipse.jdt.core.compiler.problem.comparingIdentical", "error");
@@ -131,7 +70,93 @@ public class PreferenceInitializerAddon {
 		configureSaveActions(prefs);
 		Util.savePrefs(prefs);
 	}
+
+	private void configurePDEUi() {
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.pde.ui");
+		if(null == prefs) {
+			return;
+		}
+		
+		prefs.putBoolean("Preferences.MainPage.addToJavaSearch", true);
+	}
+
+	private void configureDebug() {
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.debug.ui");
+		if(null == prefs) {
+			return;
+		}
+		
+		prefs.put("org.eclipse.debug.ui.switch_perspective_on_suspend", "always");
+		prefs.put("preferredDetailPanes", "DefaultDetailPane:DefaultDetailPane|");
+		prefs.put("org.eclipse.debug.ui.save_dirty_editors_before_launch", "always|");
+		prefs.put("org.eclipse.debug.ui.UseContextualLaunch", "false|");
+		Util.savePrefs(prefs);
+	}
+
+	private void configureIde() {
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.ide");
+		if(null == prefs) {
+			return;
+		}
+		
+		prefs.putBoolean("EXIT_PROMPT_ON_CLOSE_LAST_WINDOW", false);
+		prefs.putInt("MAX_RECENT_WORKSPACES", 10);
+		Util.savePrefs(prefs);
+	}
 	
+	private void configureWorkbench() {
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.workbench");
+		if(null == prefs) {
+			return;
+		}
+		
+		prefs.putBoolean("RUN_IN_BACKGROUND", true);
+		prefs.put("PLUGINS_NOT_ACTIVATED_ON_STARTUP", "org.eclipse.equinox.p2.ui.sdk.scheduler;org.eclipse.m2e.discovery;");
+		Util.savePrefs(prefs);
+	}
+	
+	private void configurePerformanceMonitoring() {
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.monitoring");
+		if(null == prefs) {
+			return;
+		}
+		
+		prefs.putBoolean("monitoring_enabled", true);
+		prefs.putInt("long_event_error_threshold", 800);
+		Util.savePrefs(prefs);
+	}
+	
+	private void configureEditor() {
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.ui.editors");
+		if(null == prefs) {
+			return;
+		}
+		
+		prefs.putBoolean("lineNumberRuler", true);
+		Util.savePrefs(prefs);
+	}
+	
+	private void configureXMLEditor() {
+		IEclipsePreferences prefs = Util.getNode("org.eclipse.wst.xml.core");
+		if(null == prefs) {
+			return;
+		}
+		
+		prefs.putInt("lineWidth", 120);
+		Util.savePrefs(prefs);
+	}
+
+	private void configureMemoryMonitorActive() {
+		// Platform.ui settings
+		IEclipsePreferences platformuiprefs = Util.getNode("org.eclipse.ui");
+		if(null == platformuiprefs) {
+			return;
+		}
+		
+		platformuiprefs.putBoolean("SHOW_MEMORY_MONITOR", true);
+		Util.savePrefs(platformuiprefs);
+	}
+
 	private void configureSaveActions(IEclipsePreferences prefs) {
 		prefs.putBoolean("editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup", true);
 		prefs.putBoolean("sp_cleanup.format_source_code_changes_only", true);
