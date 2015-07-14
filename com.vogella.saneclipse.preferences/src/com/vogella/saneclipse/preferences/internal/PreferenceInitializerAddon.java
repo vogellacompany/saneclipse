@@ -65,7 +65,7 @@ public class PreferenceInitializerAddon {
 		prefs.put("org.eclipse.jdt.core.compiler.problem.comparingIdentical", "error");
 		prefs.put("org.eclipse.jdt.core.compiler.problem.missingHashCodeMethod", "warning");
 		prefs.put("org.eclipse.jdt.core.compiler.problem.potentiallyUnclosedCloseable", "warning");
-		
+		prefs.put("org.eclipse.jdt.core.compiler.problem.redundantSpecificationOfTypeArguments", "warning");
 		
 		configureSaveActions(prefs);
 		Util.savePrefs(prefs);
