@@ -1,71 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates>
-  <template name="localvariable" description="Local Variable"
-    id="org.eclipse.jdt.ui.templates.localvariable" context="java-statements"
-    enabled="true" autoinsert="false">
-    ${variabletype} ${myvar:newName(var)}= new ${variabletype}(${cursor});
-  </template>
-  
-  <template name="string" description="String (empty)"
-    id="org.eclipse.jdt.ui.templates.emptystring" context="java-statements"
-    enabled="true" autoinsert="false">
-    String ${myvar:newName(var)}= "";
-  </template>
+	<template name="localvariable" description="Local Variable"
+		id="org.eclipse.jdt.ui.templates.localvariable" context="java-statements"
+		enabled="true" autoinsert="false">
+		${variabletype} ${myvar:newName(var)}= new ${variabletype}(${cursor});
+	</template>
+
+	<template name="string" description="String (empty)"
+		id="org.eclipse.jdt.ui.templates.emptystring" context="java-statements"
+		enabled="true" autoinsert="false">
+		String ${myvar:newName(var)}= "";
+	</template>
 
 
-  <template name="ifnotnull" description="If not null"
-    id="org.eclipse.jdt.ui.templates.ifnotnull" context="java-statements"
-    enabled="true" autoinsert="false">
-    if (${myvar:newName(variable)}!=null) {
-      ${cursor}
-    }
-  </template>
-  
-  <template name="ifnull" description="If null"
-    id="org.eclipse.jdt.ui.templates.iftnull" context="java-statements"
-    enabled="true" autoinsert="false">
-    if (${myvar:newName(variable)}==null) {
-      ${cursor}
-    }
-  </template>
-  
+	<template name="ifnotnull" description="If not null"
+		id="org.eclipse.jdt.ui.templates.ifnotnull" context="java-statements"
+		enabled="true" autoinsert="false">
+		if (${myvar:newName(variable)}!=null) {
+		${cursor}
+		}
+	</template>
 
-  <template name="array-string-with-test-data" description="Creates an String array with test data"
-    id="org.eclipse.jdt.ui.templates.arrayexample" context="java-statements"
-    enabled="true" autoinsert="false">
-    String[] ${myvar:newName(values)} =
-    new String[]{"Windows 7", "MacOS", "Debian", "Ubuntu", "Redhat",
-    "Android", "iPhone", "Suse", "Windows XP", "Windows Mobile", "OS/2", "WebOS"};
-  </template>
-  
-   <template name="list" description="Creates an List"
-    id="org.eclipse.jdt.ui.templates.list" context="java-statements"
-    enabled="true" autoinsert="false">
-    ${imp:import(java.util.List, java.util.ArrayList)}List&lt;Object&gt; ${myvar:newName(values)} = new ArrayList&lt;&gt;();
-  </template>
-  
-  <template name="method-public" 
-    description="Creates public method" 
-    id="org.eclipse.jdt.ui.templates.methodpublic" 
-    context="java-members" enabled="true" 
-    autoinsert="false">public void ${name}(${}) {
-      ${cursor}
-}
-  </template>
-  
-  <template name="finallyCloseStream"
-    description="Creates the finally block for closing a stream" 
-    id="org.eclipse.jdt.ui.templates.finallyclosestream"
-    context="java-statements" enabled="true" autoinsert="false">
-    finally {
-    	if (stream != null) {
-    		try {
-    			stream.close();
-    		} catch (IOException e) {
-    			e.printStackTrace();
-    		}
-    	}
-    }
-  </template>
-  
+	<template name="ifnull" description="If null"
+		id="org.eclipse.jdt.ui.templates.iftnull" context="java-statements"
+		enabled="true" autoinsert="false">
+		if (${myvar:newName(variable)}==null) {
+		${cursor}
+		}
+	</template>
+
+
+	<template name="array-string-with-test-data" description="Creates an String array with test data"
+		id="org.eclipse.jdt.ui.templates.arrayexample" context="java-statements"
+		enabled="true" autoinsert="false">
+		String[] ${myvar:newName(values)} =
+		new String[]{"Windows 7", "MacOS", "Debian", "Ubuntu", "Redhat",
+		"Android", "iPhone", "Suse", "Windows XP", "Windows Mobile", "OS/2",
+		"WebOS"};
+	</template>
+
+	<template name="list" description="Creates an List"
+		id="org.eclipse.jdt.ui.templates.list" context="java-statements"
+		enabled="true" autoinsert="false">
+		${imp:import(java.util.List, java.util.ArrayList)}List&lt;Object&gt; ${myvar:newName(values)} =
+		new ArrayList&lt;&gt;();
+	</template>
+
+	<template name="method-public" description="Creates public method"
+		id="org.eclipse.jdt.ui.templates.methodpublic" context="java-members"
+		enabled="true" autoinsert="false">public void ${name}(${}) {
+		${cursor}
+		}
+	</template>
+
+	<template name="finallyCloseStream"
+		description="Creates the finally block for closing a stream" id="org.eclipse.jdt.ui.templates.finallyclosestream"
+		context="java-statements" enabled="true" autoinsert="false">
+		finally {
+		if (stream != null) {
+		try {
+		stream.close();
+		} catch (IOException e) {
+		e.printStackTrace();
+		}
+		}
+		}
+	</template>
+
+	<template name="SLF4J-Logger"
+		description="Insert a Logger instance for a class"
+		context="java-members" enabled="true" autoinsert="true">
+		${:import(org.slf4j.Logger,org.slf4j.LoggerFactory)}
+		private static final Logger LOG = LoggerFactory.getLogger(${enclosing_type}.class);
+	</template>
+
+	<template name="Log4j-Logger"
+		description="Insert a Logger instance for a class"
+		context="java-members" enabled="true" autoinsert="true">
+		${:import(org.apache.log4j.Logger)}
+		private static final Logger LOG = Logger.getLogger(${enclosing_type}.class);
+	</template>
+
 </templates> 
