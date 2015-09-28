@@ -12,6 +12,7 @@
 
 	<modules>
 		<module>./com.vogella.saneclipse.preferences</module>
+		<module>./com.vogella.saneclipse.ideextensions</module>
 		<module>./com.vogella.saneclipse.fileextensions</module>
 		<module>./com.vogella.saneclipse.templates</module>
 		<module>./com.vogella.saneclipse.feature</module>
