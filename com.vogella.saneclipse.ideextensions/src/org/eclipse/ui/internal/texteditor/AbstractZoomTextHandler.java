@@ -9,33 +9,36 @@
  *     Mickael Istria (Red Hat Inc.) - 469918 Zoom In/Out
  *******************************************************************************/
 package org.eclipse.ui.internal.texteditor;
+
+import org.eclipse.swt.graphics.FontData;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.e4.core.services.events.IEventBroker;
+
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.jface.resource.FontRegistry;
 import org.eclipse.jface.resource.JFaceResources;
-import org.eclipse.swt.graphics.FontData;
-import org.eclipse.ui.IEditorPart;
+
+import org.eclipse.ui.IPartService;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.themes.WorkbenchThemeManager;
-import org.eclipse.ui.internal.util.PrefUtil;
 import org.eclipse.ui.part.AbstractMultiEditor;
 import org.eclipse.ui.part.MultiPageEditorPart;
+
 import org.eclipse.ui.texteditor.AbstractTextEditor;
 
 public abstract class AbstractZoomTextHandler extends AbstractHandler {
 
 	private int fontDiff;
-	
+
 	protected AbstractZoomTextHandler(int fontDiff) {
 		this.fontDiff = fontDiff;
 	}
-	
-	@Override
+
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		AbstractTextEditor textEditor = getActiveTextEditor();
 		if (textEditor == null) {
@@ -49,30 +52,33 @@ public abstract class AbstractZoomTextHandler extends AbstractHandler {
 		}
 		FontDescriptor newFontDescriptor = FontDescriptor.createFrom(initialFontData).setHeight(destFontSize);
 		fontRegistry.put(JFaceResources.TEXT_FONT, newFontDescriptor.getFontData());
-		PrefUtil.getInternalPreferenceStore().setValue(JFaceResources.TEXT_FONT, PreferenceConverter.getStoredRepresentation(newFontDescriptor.getFontData()));
-		PrefUtil.savePrefs();
-		IEventBroker eventBroker = textEditor.getSite().getWorkbenchWindow().getWorkbench().getService(IEventBroker.class);
-		eventBroker.send(WorkbenchThemeManager.Events.THEME_REGISTRY_MODIFIED, null);
-		return newFontDescriptor; 
+		PlatformUI.getPreferenceStore().setValue(JFaceResources.TEXT_FONT, PreferenceConverter.getStoredRepresentation(newFontDescriptor.getFontData()));
+		return newFontDescriptor;
 	}
-	
+
 	private AbstractTextEditor getActiveTextEditor() {
 		IWorkbench workbench = PlatformUI.getWorkbench();
-		IEditorPart editor = workbench.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
+		if (activeWorkbenchWindow == null) {
+			return null;
+		}
+		IPartService partService = activeWorkbenchWindow.getPartService();
+		if (partService == null) {
+			return null;
+		}
+		IWorkbenchPart part = partService.getActivePart();
 		AbstractTextEditor textEditor = null;
-		if (editor instanceof AbstractTextEditor) {
-			textEditor = (AbstractTextEditor)editor;
-		} else if ((editor instanceof AbstractMultiEditor) && ((AbstractMultiEditor)editor).getActiveEditor() instanceof AbstractTextEditor) {
-			textEditor = (AbstractTextEditor) ((AbstractMultiEditor)editor).getActiveEditor();
-		} else if ((editor instanceof MultiPageEditorPart) && ((MultiPageEditorPart)editor).getSelectedPage() instanceof AbstractTextEditor) {
-			textEditor = (AbstractTextEditor) ((MultiPageEditorPart)editor).getSelectedPage();
+		if (part instanceof AbstractTextEditor) {
+			textEditor = (AbstractTextEditor)part;
+		} else if ((part instanceof AbstractMultiEditor) && ((AbstractMultiEditor)part).getActiveEditor() instanceof AbstractTextEditor) {
+			textEditor = (AbstractTextEditor) ((AbstractMultiEditor)part).getActiveEditor();
+		} else if ((part instanceof MultiPageEditorPart) && ((MultiPageEditorPart)part).getSelectedPage() instanceof AbstractTextEditor) {
+			textEditor = (AbstractTextEditor) ((MultiPageEditorPart)part).getSelectedPage();
 		}
 		return textEditor;
 	}
-	
-	@Override
+
 	public boolean isEnabled() {
 		return getActiveTextEditor() != null;
 	}
-
 }
