@@ -10,7 +10,7 @@
             sequence="M1++">
       </key>
       <key
-            commandId="org.eclipse.ui.internal.edit.text.font.increaseSize"
+            commandId="org.eclipse.ui.internal.edit.text.font.decreaseSize"
             contextId="org.eclipse.ui.textEditorScope"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+-">
@@ -24,7 +24,7 @@
       </handler>
       <handler
             class="org.eclipse.ui.internal.texteditor.ZoomOutTextHandler"
-            commandId="org.eclipse.ui.internal.edit.text.font.increaseSize">
+            commandId="org.eclipse.ui.internal.edit.text.font.decreaseSize">
       </handler>
    </extension>
    <extension

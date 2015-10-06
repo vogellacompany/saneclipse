@@ -10,25 +10,22 @@
  *******************************************************************************/
 package org.eclipse.ui.internal.texteditor;
 
-import org.eclipse.swt.graphics.FontData;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.jface.resource.FontRegistry;
 import org.eclipse.jface.resource.JFaceResources;
-
+import org.eclipse.swt.graphics.FontData;
 import org.eclipse.ui.IPartService;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.WorkbenchPlugin;
 import org.eclipse.ui.part.AbstractMultiEditor;
 import org.eclipse.ui.part.MultiPageEditorPart;
-
 import org.eclipse.ui.texteditor.AbstractTextEditor;
 
 public abstract class AbstractZoomTextHandler extends AbstractHandler {
@@ -39,6 +36,7 @@ public abstract class AbstractZoomTextHandler extends AbstractHandler {
 		this.fontDiff = fontDiff;
 	}
 
+	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		AbstractTextEditor textEditor = getActiveTextEditor();
 		if (textEditor == null) {
@@ -53,6 +51,7 @@ public abstract class AbstractZoomTextHandler extends AbstractHandler {
 		FontDescriptor newFontDescriptor = FontDescriptor.createFrom(initialFontData).setHeight(destFontSize);
 		fontRegistry.put(JFaceResources.TEXT_FONT, newFontDescriptor.getFontData());
 		PlatformUI.getPreferenceStore().setValue(JFaceResources.TEXT_FONT, PreferenceConverter.getStoredRepresentation(newFontDescriptor.getFontData()));
+		WorkbenchPlugin.getDefault().getPreferenceStore().setValue(JFaceResources.TEXT_FONT, PreferenceConverter.getStoredRepresentation(newFontDescriptor.getFontData()));
 		return newFontDescriptor;
 	}
 
@@ -78,6 +77,7 @@ public abstract class AbstractZoomTextHandler extends AbstractHandler {
 		return textEditor;
 	}
 
+	@Override
 	public boolean isEnabled() {
 		return getActiveTextEditor() != null;
 	}

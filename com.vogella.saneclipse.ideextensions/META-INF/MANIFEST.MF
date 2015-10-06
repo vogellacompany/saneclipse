@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Ideextensions
 Bundle-SymbolicName: com.vogella.saneclipse.ideextensions;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-Vendor: VOGELLA
+Bundle-Vendor: vogella GmbH
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.core.commands,
  org.eclipse.ui.workbench,
