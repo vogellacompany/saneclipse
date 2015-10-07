@@ -5,15 +5,15 @@ Improved settings and code templates for Eclipse
 
 This project provides a set of plug-ins which:
 
-* Registers several default file endings if the Eclipse text editor, because opening the system editor is typically not the desired behavior
+* Registers several default file endings in the Eclipse text editor, because opening the system editor is typically not the desired behavior
 * Adds more JDT templates for JFace, Android and Java programmer
-* Configures the preference at startup of Eclipse to defaults we think have proven to be reasonable
-* Disable the p2 automatic update action has this delays the startup of the Eclipse IDE by 500ms (https://bugs.eclipse.org/bugs/show_bug.cgi?id=443809)
+* Configures the preferences at startup of Eclipse to defaults we think have proven to be reasonable
+* Disable the p2 automatic update action as this delays the startup of the Eclipse IDE by 500ms (https://bugs.eclipse.org/bugs/show_bug.cgi?id=443809)
 
 Homepage
 --------
 
-You find its homepage at http://saneclipse.vogella.com/. The source is free available under the EPL at: https://github.com/vogellacompany/com.vogella.saneclipse 
+You can find the homepage at http://saneclipse.vogella.com/. The source is free available under the EPL at: https://github.com/vogellacompany/com.vogella.saneclipse 
 
 Installation
 -----------
