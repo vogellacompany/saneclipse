@@ -15,6 +15,10 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+-">
       </key>
+       <key
+            commandId="org.eclipse.ui.window.hidetrimbars"
+            sequence="M1+M2+M"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration" />
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -39,6 +43,12 @@
             id="org.eclipse.ui.internal.edit.text.font.decreaseSize"
             name="Decrease font size">
       </command>
+       <command
+            categoryId="org.eclipse.ui.category.window"
+            defaultHandler="org.eclipse.ui.internal.handlers.HideTrimBarsHandler"
+            description="Toogle Visibility of all Toolbars"
+            id="org.eclipse.ui.window.hidetrimbars"
+            name="Toogle the visibility of all toolbars"/>
    </extension>
 
 </plugin>
