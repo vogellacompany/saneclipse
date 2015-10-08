@@ -17,6 +17,10 @@
       %license
    </license>
 
+   <url>
+      <update url="https://dl.bintray.com/vogellacompany/saneclipse/"/>
+   </url>
+
    <plugin
          id="com.vogella.saneclipse.preferences"
          download-size="0"
