@@ -17,7 +17,7 @@
       </key>
        <key
             commandId="org.eclipse.ui.window.hidetrimbars"
-            sequence="M1+M2+M"
+            sequence="M1+M3+M"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration" />
    </extension>
    <extension
