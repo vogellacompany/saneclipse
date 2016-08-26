@@ -38,11 +38,13 @@
 		"Android", "iPhone", "Suse", "Windows XP", "Windows Mobile", "OS/2",
 		"WebOS"};
 	</template>
+	
+	
 
 	<template name="list" description="Creates an List"
 		id="org.eclipse.jdt.ui.templates.list" context="java-statements"
 		enabled="true" autoinsert="false">
-		${imp:import(java.util.List, java.util.ArrayList)}List&lt;Object&gt; ${myvar:newName(values)} =
+		${imp:import(java.util.List, java.util.ArrayList)}List&lt;${cursor}&gt; ${myvar:newName(values)} =
 		new ArrayList&lt;&gt;();
 	</template>
 
