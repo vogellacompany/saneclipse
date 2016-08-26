@@ -8,13 +8,5 @@
             uri="fragment.e4xmi">
       </fragment>
    </extension>
-   <extension
-         point="org.eclipse.e4.ui.css.swt.theme">
-      <theme
-            basestylesheeturi="css/presentationmode.css"
-            id="com.vogella.saneclipse.presentation"
-            label="Presentation Mode">
-      </theme>
-   </extension>
 
 </plugin>
