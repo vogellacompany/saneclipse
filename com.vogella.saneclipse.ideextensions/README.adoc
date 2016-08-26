@@ -1,0 +1,1 @@
+For future usage, used to contain the increase/decrease shortcuts for the editor font size but this has been removed as this is standard in Neon.
