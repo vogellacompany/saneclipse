@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.jdt.ui.cleanUps">
+      <cleanUp
+      		id="org.eclipse.jdt.copyrightsaveaction.copyright_clean_up"
+            class="org.eclipse.jdt.ui.internal.copyrightupdater.CopyrightUpdaterCleanUp">
+      </cleanUp>
+      
+      <cleanUpOptionsInitializer
+            class="org.eclipse.jdt.ui.internal.copyrightupdater.CopyrightOnSaveOptionsInitializer"
+            cleanUpKind="saveAction">
+      </cleanUpOptionsInitializer>
+      
+      <cleanUpConfigurationUI
+            class="org.eclipse.jdt.ui.internal.copyrightupdater.CopyrightTabPage"
+            name="%cleanUpConfigurationUI.name"
+            cleanUpKind="saveAction">
+      </cleanUpConfigurationUI>
+      <cleanUpConfigurationUI
+            class="org.eclipse.jdt.ui.internal.copyrightupdater.CopyrightTabPage"
+            cleanUpKind="cleanUp"
+            name="%cleanUpConfigurationUI.name">
+      </cleanUpConfigurationUI>
+   </extension>
+
+</plugin>
