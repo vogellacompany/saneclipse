@@ -36,8 +36,8 @@ public class UpdateCopyrightFix implements ICleanUpFix {
 		private final String fReplaceString;
 		
 		public SearchReplacePattern(String searchPattern, String replacePattern) {
-			fSearchPattern= Pattern.compile(expandVariables(searchPattern));
-			fReplaceString= expandVariables(replacePattern);
+			fSearchPattern= Pattern.compile(replaceCurrentYearVariable(searchPattern));
+			fReplaceString= replaceCurrentYearVariable(replacePattern);
 		}
 		
 		public Pattern getSearchPattern() {
@@ -72,8 +72,7 @@ CopyrightUpdateMessages.UpdateCopyrightFix_searchPattern3_searchString, Copyrigh
 		IBuffer buffer= compilationUnit.getBuffer();
 		String contents= buffer.getContents();
 		
-		for (int i= 0; i < SEARCH_REPLACE_PATTERNS.length; i++) {
-			SearchReplacePattern pattern= SEARCH_REPLACE_PATTERNS[i];
+		for (SearchReplacePattern pattern : SEARCH_REPLACE_PATTERNS) {
 			Matcher matcher= pattern.getSearchPattern().matcher(contents);
 			if (matcher.find(0)) {
 				int start= matcher.start();
@@ -110,7 +109,7 @@ CopyrightUpdateMessages.UpdateCopyrightFix_searchPattern3_searchString, Copyrigh
 		return fChange;
 	}
 	
-	private static String expandVariables(String string) {
+	private static String replaceCurrentYearVariable(String string) {
 		Matcher matcher= CURRENT_YEAR_PATTERN.matcher(string);
 		return matcher.replaceAll(CURRENT_YEAR);
 	}
