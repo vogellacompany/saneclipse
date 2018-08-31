@@ -11,6 +11,7 @@
 package org.eclipse.jdt.ui.internal.copyrightupdater;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -66,12 +67,12 @@ public class CopyrightUpdaterCleanUp implements ICleanUp {
 	 * {@inheritDoc}
 	 */
 	public String[] getStepDescriptions() {
-		ArrayList result= new ArrayList();
+		List<String> result= new ArrayList<>();
 		
 		if (fOptions.isEnabled(UPDATE_IBM_COPYRIGHT_TO_CURRENT_YEAR))
 			result.add("Update IBM Copyright to current year"); //$NON-NLS-1$
 		
-		return (String[]) result.toArray(new String[result.size()]);
+		return result.toArray(new String[result.size()]);
 	}
 	
 	/* 
