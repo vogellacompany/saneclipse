@@ -101,10 +101,13 @@ public class CopyrightTabPage implements ICleanUpConfigurationUI {
 		} else {
 			buf.append(" * Copyright (c) 2005 IBM Corporation and others.\n"); //$NON-NLS-1$
 		}
-		buf.append(" * All rights reserved. This  program and the accompanying materials\n"); //$NON-NLS-1$
-		buf.append(" * are made available under the terms of the Eclipse Public License v1.0\n"); //$NON-NLS-1$
+		buf.append(" *\n"); //$NON-NLS-1$
+		buf.append(" * This program and the accompanying materials\n"); //$NON-NLS-1$
+		buf.append(" * are made available under the terms of the Eclipse Public License 2.0\n"); //$NON-NLS-1$
 		buf.append(" * which accompanies this distribution, and is available at\n"); //$NON-NLS-1$
-		buf.append(" * http://www.eclipse.org/legal/epl-v10.html\n"); //$NON-NLS-1$
+		buf.append(" * https://www.eclipse.org/legal/epl-2.0/\n");
+		buf.append(" *\n"); //$NON-NLS-1$
+		buf.append(" * SPDX-License-Identifier: EPL-2.0\n"); //$NON-NLS-1$
 		buf.append(" *\n"); //$NON-NLS-1$
 		buf.append(" * Contributors:\n"); //$NON-NLS-1$
 		buf.append(" *     IBM Corporation - initial API and implementation\n"); //$NON-NLS-1$
