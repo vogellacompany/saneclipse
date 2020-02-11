@@ -16,7 +16,7 @@
 	<repositories>
 		<repository>
 			<id>eclipse-updatesite</id>
-			<url>http://download.eclipse.org/releases/neon/</url>
+			<url>https://download.eclipse.org/releases/neon/</url>
 			<layout>p2</layout>
 		</repository>
 	</repositories>
